@@ -40,4 +40,4 @@
 *.pdb
 *.idb
 
-/CF_CC/.cph/
+.cph/
