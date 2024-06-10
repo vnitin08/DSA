@@ -26,25 +26,26 @@ const char nl = '\n';
 #define rep(i,n) for(ll i=0;i<n;i++)
 #define rep1(i,n) for(ll i=1;i<n;i++)
 #define repa(i,a,b) for (ll i = a; i < b; i++)
-ll gcd (ll a, ll b) {
-  return b ? gcd (b, a % b) : a;
-}
  
 void solve(){
-  ll n,m; cin>>n>>m;
-  vll v(n);
-  rep(i,n) cin>>v[i];
+    ll n; cin>>n;
+    vll a(n),b(n-1),c(n-2);
+    ll sum1=0,sum2=0,sum3=0;
+    rep(i,n){ 
+        cin>>a[i];
+        sum1+=a[i];
+    }
+    rep(i,n-1){ 
+        cin>>b[i];
+        sum2+=b[i];
+    }
+    rep(i,n-2){
+        cin>>c[i];
+        sum3+=c[i];
+    } 
 
-  sll s;
-  repr(i,n){
-    s.insert(v[i]);
-    v[i]=s.size();
-  }
-  int a;
-  while(m--){
-    cin>>a;
-    cout<<v[a-1]<<nl;
-  }
+    cout<<sum1-sum2<<nl;
+    cout<<sum2-sum3<<nl;
 }
  
 int main(){
@@ -54,5 +55,5 @@ int main(){
     // while(t--){
     // solve();
     // }
-    solve();
+    solve(); 
 }

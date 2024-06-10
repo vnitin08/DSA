@@ -26,25 +26,19 @@ const char nl = '\n';
 #define rep(i,n) for(ll i=0;i<n;i++)
 #define rep1(i,n) for(ll i=1;i<n;i++)
 #define repa(i,a,b) for (ll i = a; i < b; i++)
-ll gcd (ll a, ll b) {
-  return b ? gcd (b, a % b) : a;
-}
  
 void solve(){
-  ll n,m; cin>>n>>m;
-  vll v(n);
-  rep(i,n) cin>>v[i];
-
-  sll s;
-  repr(i,n){
-    s.insert(v[i]);
-    v[i]=s.size();
-  }
-  int a;
-  while(m--){
-    cin>>a;
-    cout<<v[a-1]<<nl;
-  }
+    ll n,m; cin>>n>>m;
+    map<string,string> mp;
+    rep(i,m){
+        string f,s; cin>>f>>s;
+        mp[f]=s;
+    }
+    rep(i,n){
+        string c; cin>>c;
+        if(mp[c].size()<c.size()) cout<<mp[c]<<" ";
+        else cout<<c<<" ";
+    }
 }
  
 int main(){
@@ -55,4 +49,5 @@ int main(){
     // solve();
     // }
     solve();
+   
 }

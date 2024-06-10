@@ -26,33 +26,30 @@ const char nl = '\n';
 #define rep(i,n) for(ll i=0;i<n;i++)
 #define rep1(i,n) for(ll i=1;i<n;i++)
 #define repa(i,a,b) for (ll i = a; i < b; i++)
-ll gcd (ll a, ll b) {
-  return b ? gcd (b, a % b) : a;
-}
  
-void solve(){
-  ll n,m; cin>>n>>m;
-  vll v(n);
-  rep(i,n) cin>>v[i];
+ int countOnesInBinary(ll n) {
+    int count = 0;
+    while (n) {
+        count += n & 1;
+        n >>= 1; // Right shift by 1 to check the next bit
+    }
+    return count;
+}
 
-  sll s;
-  repr(i,n){
-    s.insert(v[i]);
-    v[i]=s.size();
-  }
-  int a;
-  while(m--){
-    cin>>a;
-    cout<<v[a-1]<<nl;
-  }
+void solve(){
+    ll n,m,k; cin>>n>>m>>k;
+    vll v(m+1);
+    rep(i,m+1) cin>>v[i];
+    ll fedor = v[m];
+    ll ans=0;
+    rep(i,m){
+        if(countOnesInBinary(fedor^v[i]) <= k) ans++;     
+    }
+    cout<<ans<<nl;
 }
  
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    // int t; cin>>t;
-    // while(t--){
-    // solve();
-    // }
     solve();
 }
